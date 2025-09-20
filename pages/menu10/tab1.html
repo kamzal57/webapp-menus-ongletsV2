@@ -1,41 +1,46 @@
-<!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informations Établissement</title>
+    <title>Establishment Information Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
 </head>
 <body>
-    <h1>Informations Établissement</h1>
+    <h1>Establishment Information Form</h1>
     <form id="establishmentForm">
-        <label for="name">Nom de l'établissement:</label>
-        <input type="text" id="name" name="name" required><br>
-
-        <label for="address">Adresse:</label>
-        <input type="text" id="address" name="address" required><br>
-
-        <label for="phone">Numéro de téléphone:</label>
-        <input type="tel" id="phone" name="phone" required><br>
-
+        <label for="name">Establishment Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+        
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+        
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
-
-        <input type="submit" value="Soumettre">
+        <input type="email" id="email" name="email" required>
+        
+        <label for="website">Website:</label>
+        <input type="url" id="website" name="website">
+        
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+        
+        <button type="submit">Submit</button>
+        <button type="button" id="exportBtn">Export as JSON</button>
     </form>
 
     <script>
-        document.getElementById('establishmentForm').addEventListener('submit', function(event) {
+        document.getElementById('establishmentForm').onsubmit = function(event) {
             event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-            const json = JSON.stringify(data);
+            // Validation and form submission logic goes here
+        };
 
-            // Here you would typically send the JSON to your server
-            console.log(json); // For demonstration, we log it to the console
-        });
+        document.getElementById('exportBtn').onclick = function() {
+            const formData = new FormData(document.getElementById('establishmentForm'));
+            const json = JSON.stringify(Object.fromEntries(formData));
+            console.log(json);
+            // You can implement download functionality here
+        };
     </script>
 </body>
 </html>
