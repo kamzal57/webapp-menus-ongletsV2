@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Establishment Schedule Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .time-slot {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .selected {
+            background-color: #4caf50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Establishment Schedule Management</h1>
+    <label for="daySelect">Select a Day:</label>
+    <select id="daySelect">
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+        <option value="Sunday">Sunday</option>
+    </select>
+
+    <h2>Select Time Slots:</h2>
+    <div id="timeSlots">
+        <div class="time-slot" data-time="09:00">09:00 AM</div>
+        <div class="time-slot" data-time="10:00">10:00 AM</div>
+        <div class="time-slot" data-time="11:00">11:00 AM</div>
+        <div class="time-slot" data-time="12:00">12:00 PM</div>
+        <div class="time-slot" data-time="13:00">01:00 PM</div>
+        <div class="time-slot" data-time="14:00">02:00 PM</div>
+        <div class="time-slot" data-time="15:00">03:00 PM</div>
+        <div class="time-slot" data-time="16:00">04:00 PM</div>
+        <div class="time-slot" data-time="17:00">05:00 PM</div>
+    </div>
+
+    <button id="saveButton">Save Schedule</button>
+
+    <script>
+        const timeSlots = document.querySelectorAll('.time-slot');
+        const selectedSlots = new Set();
+
+        timeSlots.forEach(slot => {
+            slot.addEventListener('click', () => {
+                slot.classList.toggle('selected');
+                const time = slot.getAttribute('data-time');
+                if (selectedSlots.has(time)) {
+                    selectedSlots.delete(time);
+                } else {
+                    selectedSlots.add(time);
+                }
+            });
+        });
+
+        document.getElementById('saveButton').addEventListener('click', () => {
+            const selectedDay = document.getElementById('daySelect').value;
+            const scheduleData = {
+                day: selectedDay,
+                slots: Array.from(selectedSlots)
+            };
+            console.log('Schedule Data:', JSON.stringify(scheduleData));
+            // Here you can add functionality to save the JSON data as needed
+        });
+    </script>
+</body>
+</html>
