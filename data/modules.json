@@ -1,0 +1,124 @@
+[
+  {
+    "id": "module-1",
+    "title": "Introduction aux SVG",
+    "description": "Découvrir les bases des SVG et leur intégration dans le web",
+    "order": 1,
+    "lessons": [
+      {
+        "id": "lesson-1-1",
+        "title": "Qu'est-ce qu'un SVG ?",
+        "order": 1,
+        "theory": "# Qu'est-ce qu'un SVG ?\n\nSVG (Scalable Vector Graphics) est un format d'image vectorielle basé sur XML. Contrairement aux images bitmap, les SVG peuvent être agrandis sans perte de qualité.\n\n## Avantages des SVG\n\n- **Scalabilité** : Redimensionnable sans perte de qualité\n- **Légèreté** : Fichiers souvent plus petits que les images bitmap\n- **Modifiable** : Peut être édité avec du code\n- **Animable** : Compatible avec CSS et JavaScript pour des animations\n\n## Structure de base\n\nUn SVG est défini par la balise `<svg>` avec des attributs comme `width`, `height`, et `viewBox`.",
+        "codeExample": {
+          "html": "<svg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"100\" cy=\"100\" r=\"80\" fill=\"#4F46E5\" />\n</svg>",
+          "description": "Un simple cercle SVG"
+        },
+        "miniProject": {
+          "title": "Créer votre premier SVG",
+          "description": "Créez un SVG contenant un cercle, un rectangle et un triangle",
+          "instructions": "1. Créez une balise SVG avec width et height\n2. Ajoutez un cercle avec <circle>\n3. Ajoutez un rectangle avec <rect>\n4. Ajoutez un triangle avec <polygon>"
+        }
+      },
+      {
+        "id": "lesson-1-2",
+        "title": "Formes de base SVG",
+        "order": 2,
+        "theory": "# Formes de base SVG\n\nSVG propose plusieurs éléments pour créer des formes géométriques de base.\n\n## Les formes principales\n\n### Rectangle - `<rect>`\n- `x`, `y` : Position\n- `width`, `height` : Dimensions\n- `rx`, `ry` : Coins arrondis\n\n### Cercle - `<circle>`\n- `cx`, `cy` : Centre\n- `r` : Rayon\n\n### Ellipse - `<ellipse>`\n- `cx`, `cy` : Centre\n- `rx`, `ry` : Rayons horizontaux et verticaux\n\n### Ligne - `<line>`\n- `x1`, `y1` : Point de départ\n- `x2`, `y2` : Point d'arrivée\n\n### Polygone - `<polygon>`\n- `points` : Liste de coordonnées\n\n### Path - `<path>`\n- `d` : Définition du chemin (le plus puissant)",
+        "codeExample": {
+          "html": "<svg width=\"400\" height=\"300\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"10\" y=\"10\" width=\"100\" height=\"100\" fill=\"#EF4444\" rx=\"10\" />\n  <circle cx=\"200\" cy=\"60\" r=\"50\" fill=\"#10B981\" />\n  <ellipse cx=\"320\" cy=\"60\" rx=\"60\" ry=\"40\" fill=\"#3B82F6\" />\n  <line x1=\"10\" y1=\"150\" x2=\"380\" y2=\"150\" stroke=\"#6B7280\" stroke-width=\"3\" />\n  <polygon points=\"100,200 150,270 50,270\" fill=\"#F59E0B\" />\n</svg>",
+          "description": "Exemples de formes SVG de base"
+        },
+        "miniProject": {
+          "title": "Créer une scène avec des formes",
+          "description": "Créez une maison simple en utilisant différentes formes SVG",
+          "instructions": "1. Utilisez un rectangle pour le corps de la maison\n2. Utilisez un polygone pour le toit\n3. Ajoutez des rectangles pour les fenêtres et la porte\n4. Ajoutez un cercle pour le soleil\n5. Personnalisez les couleurs"
+        }
+      }
+    ]
+  },
+  {
+    "id": "module-2",
+    "title": "Animations CSS avec SVG",
+    "description": "Apprendre à animer des SVG avec CSS",
+    "order": 2,
+    "lessons": [
+      {
+        "id": "lesson-2-1",
+        "title": "Transitions CSS sur SVG",
+        "order": 1,
+        "theory": "# Transitions CSS sur SVG\n\nLes transitions CSS permettent d'animer les changements de propriétés SVG de manière fluide.\n\n## Propriétés animables\n\n- `fill` : Couleur de remplissage\n- `stroke` : Couleur de contour\n- `opacity` : Opacité\n- `transform` : Transformations (rotation, translation, échelle)\n\n## Syntaxe de base\n\n```css\nsvg circle {\n  transition: fill 0.3s ease;\n}\n\nsvg circle:hover {\n  fill: #FF6B6B;\n}\n```",
+        "codeExample": {
+          "html": "<svg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\">\n  <style>\n    .animated-circle {\n      fill: #4F46E5;\n      transition: fill 0.5s ease, transform 0.5s ease;\n    }\n    .animated-circle:hover {\n      fill: #EF4444;\n      transform: scale(1.2);\n    }\n  </style>\n  <circle class=\"animated-circle\" cx=\"100\" cy=\"100\" r=\"60\" />\n</svg>",
+          "description": "Cercle avec transition au survol"
+        },
+        "miniProject": {
+          "title": "Bouton SVG interactif",
+          "description": "Créez un bouton SVG avec des effets de survol",
+          "instructions": "1. Créez un SVG avec un rectangle arrondi\n2. Ajoutez du texte au centre\n3. Animez la couleur et l'échelle au survol\n4. Ajoutez une ombre avec filter"
+        }
+      },
+      {
+        "id": "lesson-2-2",
+        "title": "Animations keyframes CSS",
+        "order": 2,
+        "theory": "# Animations keyframes CSS\n\nLes keyframes permettent de créer des animations complexes avec plusieurs étapes.\n\n## Définition d'une animation\n\n```css\n@keyframes rotate {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n.rotating-element {\n  animation: rotate 2s linear infinite;\n}\n```\n\n## Propriétés d'animation\n\n- `animation-name` : Nom de l'animation\n- `animation-duration` : Durée\n- `animation-timing-function` : Fonction de timing (ease, linear, etc.)\n- `animation-iteration-count` : Nombre de répétitions\n- `animation-direction` : Direction (normal, reverse, alternate)",
+        "codeExample": {
+          "html": "<svg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\">\n  <style>\n    @keyframes pulse {\n      0%, 100% {\n        opacity: 1;\n        transform: scale(1);\n      }\n      50% {\n        opacity: 0.5;\n        transform: scale(1.3);\n      }\n    }\n    .pulsing-circle {\n      animation: pulse 2s ease-in-out infinite;\n      transform-origin: center;\n    }\n  </style>\n  <circle class=\"pulsing-circle\" cx=\"100\" cy=\"100\" r=\"40\" fill=\"#10B981\" />\n</svg>",
+          "description": "Cercle avec animation pulsante"
+        },
+        "miniProject": {
+          "title": "Loader animé SVG",
+          "description": "Créez un loader (spinner) animé en SVG",
+          "instructions": "1. Créez plusieurs cercles ou rectangles\n2. Utilisez keyframes pour animer l'opacité ou la position\n3. Décalez l'animation pour chaque élément avec animation-delay\n4. Rendez l'animation infinie"
+        }
+      }
+    ]
+  },
+  {
+    "id": "module-3",
+    "title": "Animations JavaScript et GSAP",
+    "description": "Maîtriser les animations avancées avec JavaScript et GSAP",
+    "order": 3,
+    "lessons": [
+      {
+        "id": "lesson-3-1",
+        "title": "Introduction à GSAP",
+        "order": 1,
+        "theory": "# Introduction à GSAP\n\nGSAP (GreenSock Animation Platform) est une bibliothèque JavaScript puissante pour créer des animations complexes et performantes.\n\n## Pourquoi GSAP ?\n\n- **Performance** : Optimisé pour des animations fluides\n- **Compatibilité** : Fonctionne sur tous les navigateurs\n- **Flexibilité** : API intuitive et puissante\n- **Timeline** : Séquençage d'animations\n\n## Installation\n\n```bash\nnpm install gsap\n```\n\n## Syntaxe de base\n\n```javascript\nimport { gsap } from 'gsap';\n\ngsap.to('.element', {\n  duration: 1,\n  x: 100,\n  rotation: 360,\n  ease: 'power2.inOut'\n});\n```",
+        "codeExample": {
+          "html": "<svg id=\"gsap-demo\" width=\"400\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle id=\"gsap-circle\" cx=\"50\" cy=\"100\" r=\"30\" fill=\"#8B5CF6\" />\n</svg>\n<button onclick=\"animateCircle()\">Animer</button>\n\n<script>\nfunction animateCircle() {\n  gsap.to('#gsap-circle', {\n    duration: 2,\n    attr: { cx: 350 },\n    ease: 'elastic.out(1, 0.3)'\n  });\n}\n</script>",
+          "description": "Animation GSAP basique d'un cercle"
+        },
+        "miniProject": {
+          "title": "Animation de path SVG",
+          "description": "Créez une animation de dessin de ligne avec GSAP",
+          "instructions": "1. Créez un path SVG complexe\n2. Utilisez stroke-dasharray et stroke-dashoffset\n3. Animez avec GSAP pour créer un effet de dessin\n4. Ajoutez des contrôles play/pause"
+        }
+      }
+    ]
+  },
+  {
+    "id": "module-4",
+    "title": "Projets avancés",
+    "description": "Créer des animations SVG complexes et interactives",
+    "order": 4,
+    "lessons": [
+      {
+        "id": "lesson-4-1",
+        "title": "Graphiques animés",
+        "order": 1,
+        "theory": "# Graphiques animés avec SVG\n\nLes SVG sont parfaits pour créer des graphiques interactifs et animés.\n\n## Types de graphiques\n\n- **Graphiques en barres** : Utilisation de `<rect>`\n- **Graphiques circulaires** : Utilisation de `<path>` avec arc\n- **Graphiques linéaires** : Utilisation de `<polyline>` ou `<path>`\n\n## Animation des données\n\nAnimez l'apparition des données pour une meilleure expérience utilisateur.",
+        "codeExample": {
+          "html": "<svg width=\"400\" height=\"300\" xmlns=\"http://www.w3.org/2000/svg\">\n  <style>\n    .bar { transition: height 0.5s ease; }\n  </style>\n  <rect class=\"bar\" x=\"50\" y=\"200\" width=\"60\" height=\"0\" fill=\"#3B82F6\" />\n  <rect class=\"bar\" x=\"130\" y=\"150\" width=\"60\" height=\"0\" fill=\"#10B981\" />\n  <rect class=\"bar\" x=\"210\" y=\"100\" width=\"60\" height=\"0\" fill=\"#F59E0B\" />\n  <rect class=\"bar\" x=\"290\" y=\"50\" width=\"60\" height=\"0\" fill=\"#EF4444\" />\n</svg>",
+          "description": "Graphique en barres animé"
+        },
+        "miniProject": {
+          "title": "Dashboard interactif",
+          "description": "Créez un mini-dashboard avec plusieurs graphiques SVG animés",
+          "instructions": "1. Créez un graphique en barres\n2. Créez un graphique circulaire\n3. Animez l'apparition des données\n4. Ajoutez des tooltips interactifs"
+        }
+      }
+    ]
+  }
+]
